@@ -56,3 +56,55 @@ input[type="submit"] {
     padding: .375rem 1rem;
     margin-top: 10px;
 }
+
+.page {
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.button {
+    display: inline-block;
+    padding: .5rem 1rem;
+    background-color: #ff7a59;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.records {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.records th,
+.records td {
+    text-align: left;
+    padding: .6rem .75rem;
+    border-bottom: solid 1px lightgrey;
+}
+
+.records th {
+    background-color: #f5f8fa;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.error {
+    color: #b00020;
+    margin: 1rem 0;
+}
+
+label {
+    margin-top: 1rem;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: .25rem;
+    font-size: inherit;
+}
