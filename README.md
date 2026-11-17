@@ -4,7 +4,27 @@ This repository is for the Integrating With HubSpot I: Foundations course. This 
 
 To read the full directions, please go to the [practicum instructions](https://app.hubspot.com/academy/l/tracks/1092124/1093824/5493?language=en).
 
-**Put your HubSpot developer test account custom objects URL link here:** https://app.hubspot.com/contacts/l/objects/${custom-obj-number}/views/all/list
+**Put your HubSpot developer test account custom objects URL link here:** https://app.hubspot.com/contacts/51817376/objects/2-73121787/views/all/list
+
+## My project: Accreditations
+
+The custom object is **Accreditation**, a professional credential a contact holds. It is associated with contacts and has these properties:
+
+| Property | Internal name | Type |
+|---|---|---|
+| Name | `name` | Single-line text (primary display, required) |
+| Issuing Body | `issuing_body` | Single-line text |
+| Credential Level | `credential_level` | Dropdown: Foundation, Associate, Professional, Expert |
+| CE Credits Required | `ce_credits` | Number |
+
+### Running it locally
+
+1. `npm install`
+2. Create a `.env` file (it's gitignored) containing `PRIVATE_APP_ACCESS=<your private app token>`
+3. Optional: `node scripts/setup-hubspot.js` creates the schema, seeds three records and associates them with contacts
+4. `node index.js`, then open http://localhost:3000
+
+Routes: `GET /` (table of records), `GET /update-cobj` (form), `POST /update-cobj` (creates a record, then redirects to `/`).
 
 ___
 ## Tips:
