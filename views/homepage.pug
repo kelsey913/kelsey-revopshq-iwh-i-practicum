@@ -1,0 +1,29 @@
+doctype html
+html
+    head
+        title= title
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/css/style.css")
+    body
+        .page
+            a.button(href="/update-cobj") Add to this table
+            h1 Accreditations
+            if error
+                p.error= error
+            table.records
+                thead
+                    tr
+                        th Name
+                        th Issuing Body
+                        th Credential Level
+                        th CE Credits Required
+                tbody
+                    each record in data
+                        tr
+                            td= record.properties.name
+                            td= record.properties.issuing_body
+                            td.capitalize= record.properties.credential_level
+                            td= record.properties.ce_credits
+                    else
+                        tr
+                            td(colspan="4") No accreditations yet.

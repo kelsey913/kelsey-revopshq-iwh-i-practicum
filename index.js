@@ -23,7 +23,21 @@ const headers = {
 
 // TODO: ROUTE 1 - Create a new app.get route for the homepage to call your custom object data. Pass this data along to the front-end and create a new pug template in the views folder.
 
-// * Code for Route 1 goes here
+app.get('/', async (req, res) => {
+    const url = `https://api.hubapi.com/crm/v3/objects/${OBJECT_TYPE_ID}?limit=100&properties=${PROPERTIES.join(',')}`;
+    try {
+        const resp = await axios.get(url, { headers });
+        const data = resp.data.results;
+        res.render('homepage', { title: 'Accreditations | Integrating With HubSpot I Practicum', data });
+    } catch (error) {
+        console.error(error.response ? error.response.data : error);
+        res.status(500).render('homepage', {
+            title: 'Accreditations | Integrating With HubSpot I Practicum',
+            data: [],
+            error: 'Could not load accreditations from HubSpot.'
+        });
+    }
+});
 
 // TODO: ROUTE 2 - Create a new app.get route for the form to create or update new custom object data. Send this data along in the next route.
 
