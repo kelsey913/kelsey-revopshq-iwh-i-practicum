@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
 const app = express();
@@ -7,8 +8,18 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// * Please DO NOT INCLUDE the private app access token in your repo. Don't do this practicum in your normal account.
-const PRIVATE_APP_ACCESS = '';
+// * Please DO NOT INCLUDE the private app access token in your repo. It is loaded from .env (gitignored).
+const PRIVATE_APP_ACCESS = process.env.PRIVATE_APP_ACCESS;
+
+// Custom object: Accreditation (credentials held by contacts)
+const OBJECT_TYPE_ID = '2-73121787';
+const PROPERTIES = ['name', 'issuing_body', 'credential_level', 'ce_credits'];
+const CREDENTIAL_LEVELS = ['Foundation', 'Associate', 'Professional', 'Expert'];
+
+const headers = {
+    Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
+    'Content-Type': 'application/json'
+};
 
 // TODO: ROUTE 1 - Create a new app.get route for the homepage to call your custom object data. Pass this data along to the front-end and create a new pug template in the views folder.
 
