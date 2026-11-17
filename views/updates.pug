@@ -1,0 +1,30 @@
+doctype html
+html
+    head
+        title= title
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/css/style.css")
+    body
+        .page
+            a(href="/") Return to the homepage
+            .form-wrapper
+                h1 Add an Accreditation
+                if error
+                    p.error= error
+                - const v = values || {}
+                form(action="/update-cobj" method="POST")
+                    label(for="name") Name
+                    input#name(type="text" name="name" value=v.name required)
+
+                    label(for="issuing_body") Issuing Body
+                    input#issuing_body(type="text" name="issuing_body" value=v.issuing_body required)
+
+                    label(for="credential_level") Credential Level
+                    select#credential_level(name="credential_level" required)
+                        each level in levels
+                            option(value=level.toLowerCase() selected=(v.credential_level === level.toLowerCase()))= level
+
+                    label(for="ce_credits") CE Credits Required
+                    input#ce_credits(type="number" name="ce_credits" min="0" value=v.ce_credits required)
+
+                    input(type="submit" value="Create accreditation")
